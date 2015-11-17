@@ -5,7 +5,10 @@
 
 # tasks file for roles/glenux.bash
 - name: Install bashrc
-  copy: src=bashrc dest=~/.bashrc
+  copy: >
+    src=bashrc 
+    dest=~/.bashrc
+    mode=0644
   become: true
   become_user: "{{item}}"
   with_items: bash_users
