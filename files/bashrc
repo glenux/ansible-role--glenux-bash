@@ -2,6 +2,12 @@
 ## BASH RC - every new shell
 ## 
 
+## 01-29 environment changes (XX-bin-... and XX-env-)
+## 40-69 development settings (XX-dev)
+## 70-89 utilities and applications specific environment changes (XX-app-...)
+## 90-99 shell customisation : colors, prompt, etc. 
+## 95-99 miscelanous or low priority : aliases and completion (XX-misc-)
+
 if [ -d "$HOME/.bashrc.d" ]; then
 	for script in $(find "$HOME/.bashrc.d/" -name '*.sh' |sort -n) ; do
 		# echo "Loading `basename \"$script\"`..." # >&2

@@ -4,14 +4,16 @@
   register: bash_scripts
 
 # tasks file for roles/glenux.bash
-- name: Install bashrc
-  copy: >
-    src=bashrc 
-    dest=~/.bashrc
+- name: Install main configuration files for bash
+  copy:
+    src={{item[1]}}
+    dest=~/.{{item[1]|basename}}
     mode=0644
   become: true
-  become_user: "{{item}}"
-  with_items: bash_users
+  become_user: "{{item[0]}}"
+  with_nested: 
+    - bash_users
+    - ['bashrc', 'bash_profile', 'bash_aliases']
 
 - name: Create bashrc.d directory
   file: path=~/.bashrc.d state=directory
