@@ -10,6 +10,12 @@
   become_user: "{{item}}"
   with_items: bash_users
 
+- name: Create bashrc.d directory
+  file: path=~/.bashrc.d state=directory
+  become: true
+  become_user: "{{item}}"
+  with_items: bash_users
+
 - name: Install bashrc.d files
   copy: "src={{item[1]}} dest=~/.bashrc.d/{{item[1]|basename}}"
   become: true
