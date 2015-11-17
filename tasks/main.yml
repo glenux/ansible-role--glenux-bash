@@ -1,21 +1,17 @@
 ---
 - name: List installable sh scripts
-  command: ls -1 bashrc.d/*.sh
+  shell: ls -1 "{{role_path}}/files/bashrc.d/"*.sh
   register: bash_scripts
 
 # tasks file for roles/glenux.bash
 - name: Install bashrc
-  copy:
-    src=bashrc
-    dest=~/.bashrc
+  copy: src=bashrc dest=~/.bashrc
   become: true
   become_user: "{{item}}"
   with_items: bash_users
 
 - name: Install bashrc.d files
-  copy: >
-    "src={{item}}"
-    "dest=~/.bashrc.d/{{item[1]|basename}}"
+  copy: "src={{item[1]}} dest=~/.bashrc.d/{{item[1]|basename}}"
   become: true
   become_user: "{{item[0]}}"
   with_nested:
