@@ -1,0 +1,70 @@
+### ALIASES SUDO
+alias apt-get='sudo apt-get'
+alias apt-cache='sudo apt-cache'
+alias dpkg='sudo dpkg'
+alias photo_dl='sudo gphoto2 --auto-detect -P'
+alias gnux_dvd='sudo /home/warbrain/bin/gnux_dvd'
+ 
+alias svnforget='svn st | egrep '\''^(\!|\?).*\.(cpp|cc|am|h|hh|hxx|tex|png)$'\'''
+
+## ALIASES
+alias atodo='todo -G'
+alias tdg='todo -G'
+alias be='bundle exec'
+
+alias ls='ls --color=auto -F'
+alias makepatch='LC_ALL=C TZ=UTC0 diff -Naur '
+alias timidity='timidity -Oe'
+alias synaptic='gksu synaptic'
+alias sl='ls'
+#alias cmake='colormake'
+alias music123='esddsp music123'
+alias xdu='du > ~/.tmp/du.out && xdu -n -c 7 ~/.tmp/du.out'
+alias gnux_bgfiles='find -exec du -sh "{}" \; | egrep [0-9]M | sort -n | tail -n 11 | head -n 10'
+alias fr='file-roller'
+alias mp3blaster='esddsp mp3blaster'
+alias ll='ls -lh' 
+alias llla='ls -la | less' 
+alias lsd="ls -F | egrep '\/$'" 
+alias speech='esddsp festival --tts'
+alias gvimr='gvim --remote-tab'
+alias grep='grep --color'
+## SERVERS SSH
+
+alias host_dptmaths='ssh -X -C ssh.dptmaths.ens-cachan.fr -l rolland'
+alias host_shamox='ssh -X -c arcfour -C -p 22 shamox.ath.cx -l warbrain'
+alias host_darby='ssh -X -c arcfour -C darby -l warbrain'
+alias host_daka='ssh -X -c arcfour -C daka -l warbrain'
+# pass 'noir'
+alias tunnel_murlock='ssh -L8882:localhost:8888 bewan@murlock.hd.free.fr -N'
+#alias diades='ssh -X -c arcfour -C diades.glenux.net -l warbrain'
+#alias dungeon='ssh -X -c blowfish -C dungeon -l warbrain'
+#alias djeke='ssh -X -c blowfish -C djeke -l warbrain'
+#alias sword='ssh -X -c blowfish -C sword.ath.cx -l warbrain'
+alias ykhoo='ssh -X -c blowfish -C ykhoo.ath.cx -l warbrain'
+alias daneel='ssh -X -c blowfish -C daneel.glenux.net -l warbrain'
+alias ef='LD_PRELOAD=libefence.so.0.0 '
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias divx='find /cdrom -name \*.[Aa][Vv][Ii] -o -name \*.[oO][Gg][Mm] -ok mplayer \-fs \-x 512 \-y 300 {} \;' 
+#alias ip='/sbin/ifconfig eth0 | grep adr | sed -e "s/^.*adr://" |sed -e "s/ Bcast.*//" ' 
+
+alias rmplayer="mplayer -ao esd -nocache"
+
+alias filter_video="egrep -i '\.(avi|mov|mpe?g|mkv|wmv|rm)$'"
+alias filter_audio="egrep -i '\.(wav|flac|mp3|aac|m4a|ogg|wma)$'"
+alias filter_image="egrep -i '\.(jpe?g|png|xcf(.gz)|eps|svg|gif)$'"
+alias filter_imageart="egrep -i '\.(xcf(.gz)?|psd|ora|svg)$'"
+alias filter_archive="egrep -i '\.(tar\.)?(gz|bz2|7z|tgz|zip|rar|ace|zoo|arj|lha)$'"
+alias filter_document="egrep -i '\.(txt|pdf|ps|sxw|odt|doc|rtf)$'"
+
+alias pwgen="pwgen -B  10 14"
+alias http_serve="python -m SimpleHTTPServer 5001"
+
+alias scp="BINARY_SSH=scp $HOME/bin/ssh"
+alias rsync="BINARY_SSH=rsync $HOME/bin/ssh"
+alias fuck='$(thefuck $(fc -ln -1))'
+alias baloostatus='balooctl status 2>/dev/null |grep Indexed |awk -v p=200 "{print int(p * \$2/\$4)/p; }"'
