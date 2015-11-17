@@ -1,2 +1,17 @@
 ---
 # tasks file for roles/glenux.bash
+- name: Install bashrc
+  
+
+    fileglob: 
+    - bashrc.d/*.sh
+
+- name: Install bashrc.d files
+  copy: 
+    "src={{item}}"
+    "dest=~/.bashrc.d/{{item|basename}}"
+  with_nested:
+    - bash_users
+    - bash_files
+  become: true
+  become_user: "{{item}}"
