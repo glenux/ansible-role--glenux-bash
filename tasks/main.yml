@@ -2,6 +2,9 @@
 - name: List installable sh scripts
   shell: ls -1 "{{role_path}}/files/bashrc.d/"*.sh
   register: bash_scripts
+  failed_when: 
+      bash_scripts.rc != 0
+  changed_when: False
 
 # tasks file for roles/glenux.bash
 - name: Install main configuration files for bash
