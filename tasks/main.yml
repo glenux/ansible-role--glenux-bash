@@ -1,6 +1,7 @@
 ---
 - name: List installable sh scripts
-  shell: ls -1 "{{role_path}}/files/bashrc.d/"*.sh
+  become: false
+  local_action: shell ls -1 "{{role_path}}/files/bashrc.d/"*.sh
   register: bash_scripts
   failed_when: 
       bash_scripts.rc != 0
