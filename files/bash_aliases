@@ -1,70 +1,110 @@
-### ALIASES SUDO
-alias apt-get='sudo apt-get'
-alias apt-cache='sudo apt-cache'
-alias dpkg='sudo dpkg'
-alias photo_dl='sudo gphoto2 --auto-detect -P'
-alias gnux_dvd='sudo /home/warbrain/bin/gnux_dvd'
- 
-alias svnforget='svn st | egrep '\''^(\!|\?).*\.(cpp|cc|am|h|hh|hxx|tex|png)$'\'''
+# ## ALIASES SUDO
 
-## ALIASES
-alias atodo='todo -G'
-alias tdg='todo -G'
-alias be='bundle exec'
-
-alias ls='ls --color=auto -F'
-alias makepatch='LC_ALL=C TZ=UTC0 diff -Naur '
-alias timidity='timidity -Oe'
-alias synaptic='gksu synaptic'
-alias sl='ls'
-#alias cmake='colormake'
-alias music123='esddsp music123'
-alias xdu='du > ~/.tmp/du.out && xdu -n -c 7 ~/.tmp/du.out'
-alias gnux_bgfiles='find -exec du -sh "{}" \; | egrep [0-9]M | sort -n | tail -n 11 | head -n 10'
-alias fr='file-roller'
-alias mp3blaster='esddsp mp3blaster'
-alias ll='ls -lh' 
-alias llla='ls -la | less' 
-alias lsd="ls -F | egrep '\/$'" 
-alias speech='esddsp festival --tts'
-alias gvimr='gvim --remote-tab'
-alias grep='grep --color'
-## SERVERS SSH
-
-alias host_dptmaths='ssh -X -C ssh.dptmaths.ens-cachan.fr -l rolland'
-alias host_shamox='ssh -X -c arcfour -C -p 22 shamox.ath.cx -l warbrain'
-alias host_darby='ssh -X -c arcfour -C darby -l warbrain'
-alias host_daka='ssh -X -c arcfour -C daka -l warbrain'
-# pass 'noir'
-alias tunnel_murlock='ssh -L8882:localhost:8888 bewan@murlock.hd.free.fr -N'
-#alias diades='ssh -X -c arcfour -C diades.glenux.net -l warbrain'
-#alias dungeon='ssh -X -c blowfish -C dungeon -l warbrain'
-#alias djeke='ssh -X -c blowfish -C djeke -l warbrain'
-#alias sword='ssh -X -c blowfish -C sword.ath.cx -l warbrain'
-alias ykhoo='ssh -X -c blowfish -C ykhoo.ath.cx -l warbrain'
-alias daneel='ssh -X -c blowfish -C daneel.glenux.net -l warbrain'
-alias ef='LD_PRELOAD=libefence.so.0.0 '
-
+## MOLLY-GUARD
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias divx='find /cdrom -name \*.[Aa][Vv][Ii] -o -name \*.[oO][Gg][Mm] -ok mplayer \-fs \-x 512 \-y 300 {} \;' 
-#alias ip='/sbin/ifconfig eth0 | grep adr | sed -e "s/^.*adr://" |sed -e "s/ Bcast.*//" ' 
+## BROWSING FILESYSTEM
+alias ls='$( if hash exa 2>&1 >/dev/null; then echo exa ; else ls ; fi ) -F --group-directories-first '
+alias sl='ls'
+alias ll='ls -lh'
+alias llla='ls -la | less' 
+alias lsd="ls -F | egrep '\/$'" 
+alias xdu='du > ~/.tmp/du.out && xdu -n -c 7 ~/.tmp/du.out'
+alias iexplore='xdg-open .'
 
-alias rmplayer="mplayer -ao esd -nocache"
+alias cat='$( if hash batcat 2>&1 >/dev/null ; then echo batcat ; else echo cat ; fi )'
+alias bat='$( if hash batcat 2>&1 >/dev/null ; then echo batcat ; else echo cat ; fi )'
 
-alias filter_video="egrep -i '\.(avi|mov|mpe?g|mkv|wmv|rm)$'"
-alias filter_audio="egrep -i '\.(wav|flac|mp3|aac|m4a|ogg|wma)$'"
+
+## FILES FILTERING
+alias filter_video="egrep -i '\.(avi|mov|mpe?g|mkv|wmv|rm|mp4)$'"
+alias filter_audio="egrep -i '\.(wav|flac|mp3|aac|m4a|ogg|wma|opus|ape)$'"
 alias filter_image="egrep -i '\.(jpe?g|png|xcf(.gz)|eps|svg|gif)$'"
 alias filter_imageart="egrep -i '\.(xcf(.gz)?|psd|ora|svg)$'"
 alias filter_archive="egrep -i '\.(tar\.)?(gz|bz2|7z|tgz|zip|rar|ace|zoo|arj|lha)$'"
-alias filter_document="egrep -i '\.(txt|pdf|ps|sxw|odt|doc|rtf)$'"
+alias filter_document="egrep -i '\.(txt|pdf|ps|sxw|odt|doc|docx|xls|xlsx|rtf)$'"
 
-alias pwgen="pwgen -B  10 14"
-alias http_serve="python -m SimpleHTTPServer 5001"
 
-alias scp="BINARY_SSH=scp $HOME/bin/ssh"
-alias rsync="BINARY_SSH=rsync $HOME/bin/ssh"
+## DEVELOPMENT
+alias be='bundle exec'
+alias pe='pipenv run'
+alias dcp='docker-compose'
+alias preload_efence='LD_PRELOAD=libefence.so.0.0 '
+alias svnforget='svn st | egrep '\''^(\!|\?).*\.(cpp|cc|am|h|hh|hxx|tex|png)$'\'''
+
+
+## MULTIMEDIA
+alias photo_dl='sudo gphoto2 --auto-detect -P'
+alias rmplayer="mplayer -ao esd -nocache"
+alias timidity='timidity -Oe'
+alias music123='esddsp music123'
+alias speech='esddsp festival --tts'
+alias paria='aria2c -k 2M -x 10 -s 10'
+
+
+## HOSTING
+alias dokku='/usr/bin/ssh dokku@apps.glenux.net'
+alias ge="ghostwriter"
+ 
+
+## PRODUCTIVITY
+alias atodo='todo -G'
+alias tdg='todo -G'
+
+alias makepatch='LC_ALL=C TZ=UTC0 diff -Naur '
+#alias cmake='colormake'
+alias gnux_bgfiles='find -exec du -sh "{}" \; | egrep [0-9]M | sort -n | tail -n 11 | head -n 10'
+alias gvimr='gvim --remote-tab'
+alias grep='grep --color'
+
+## SERVERS SSH
+# pass 'noir'
+#alias ip='/sbin/ifconfig eth0 | grep adr | sed -e "s/^.*adr://" |sed -e "s/ Bcast.*//" ' 
+
+alias pwgen="pwgen -s -n -B 24 30"
+alias http_serve='$( if hash python3 ; then echo python3 -m http.server 5001 ; else echo python2 -m SimpleHTTPServer 5001 ; fi )'
+
+# alias scp="BINARY_SSH=scp $HOME/bin/ssh"
+# alias rsync="BINARY_SSH=rsync $HOME/bin/ssh"
 alias fuck='$(thefuck $(fc -ln -1))'
 alias baloostatus='balooctl status 2>/dev/null |grep Indexed |awk -v p=200 "{print int(p * \$2/\$4)/p; }"'
+
+alias docker_ip="docker inspect -f '{{ .NetworkSettings.IPAddress}}'"
+
+alias ctrlc='xclip -selection clipboard -i'
+alias ctrlv='xclip -selection clipboard -o'
+alias vimfm=vifm
+alias mkhash='head -c 1000 /dev/urandom  |sha256sum |cut -c1-9'
+alias dotenv='eval "$(sed -e "/^[[:space:]]*$/d" -e "s/^/export /" < .env)"'
+alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
+
+alias proxy_nextformation_etoile='http_proxy=http://172.16.102.254:3128 https_proxy=http://172.16.102.254:3128 no_proxy=127.0.0.1,localhost'
+alias proxy_nextformation_firmingillot8='http_proxy=http://172.16.108.254:3128 https_proxy=http://172.16.108.254:3128 no_proxy=127.0.0.1,localhost'
+alias proxy_nextformation_firmingillot9='http_proxy=http://172.16.109.254:3128 https_proxy=http://172.16.109.254:3128 no_proxy=127.0.0.1,localhost'
+alias proxy_local8080='http_proxy=socks5://localhost:8080 https_proxy=socks5://localhost:8080'
+
+alias diff_code='diff --color=always -Nur -x node_modules'
+alias mkemail='echo "$(date +"%Y").$(cat /dev/urandom | tr -dc "a-z0-9" | head -c 8)@glenux.net"'
+
+
+alias pouet="echo pouet"
+alias reddit=tuir
+alias ebook=epr
+
+alias tt=timew
+alias ttd='timew day :week :id'
+alias tts='timew sum :week :id'
+alias xc-libreoffice="libreoffice \"-env:UserInstallation=file://$HOME/.config/libreoffice/4/xopetotec\""
+alias unlock_screen='kill -9 $(pgrep [k]screenlocker)'
+
+alias unfmt="awk '{printf \"%s \",$0} /^$/{print \"\n\"} END{print \"\"}'"
+alias cast='go-chromecast --first'
+alias edit_goyo="EDITOR=goyo RAND_EDITOR=goyo"
+alias edit_ghostwriter="EDITOR=ghostwriter RAND_EDITOR=ghostwriter"
+alias khal_report="khal list  2021-06-01 2021-12-01 --format '  {start-time} .. {end-time}  {title}'"
+alias vpn_stop="nmcli connect down \$(nmcli connect show --active |awk '/wireg/ {print \$1; }' )"
+alias vpn_start_rand="nmcli connect up \$(nmcli connect |awk '/wireg/ {print \$1; }' |shuf -n1)"
+alias vpn_status="nmcli connection show --active | awk '/wireguard/ { print \$1; }'"
+
