@@ -5,5 +5,5 @@
 #export GREP_COLORS
 
 # disable deprecated variable
-export GREP_OPTIONS=
+unset GREP_OPTIONS
 
