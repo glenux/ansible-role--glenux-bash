@@ -1,35 +1,5 @@
 ---
-- name: List installable sh scripts
-  become: false
-  local_action: shell ls -1 "{{role_path}}/files/bashrc.d/"*.sh
-  register: bash_scripts
-  failed_when: 
-      bash_scripts.rc != 0
-  changed_when: False
 
-# tasks file for roles/glenux.bash
-- name: Install main configuration files for bash
-  copy: >
-    src="{{item[1]}}"
-    dest="~/.{{item[1]|basename}}"
-    mode=0644
-  become: true
-  become_user: "{{item[0]}}"
-  with_nested: 
-    - "{{bash_users}}"
-    - ['bashrc', 'bash_profile', 'bash_aliases']
-
-- name: Create bashrc.d directory
-  file: path=~/.bashrc.d state=directory
-  become: true
-  become_user: "{{item}}"
-  with_items: "{{bash_users}}"
-
-- name: Install bashrc.d files
-  copy: "src={{item[1]}} dest=~/.bashrc.d/{{item[1]|basename}}"
-  become: true
-  become_user: "{{item[0]}}"
-  with_nested:
-    - "{{bash_users}}"
-    - "{{bash_scripts.stdout_lines}}"
+- include_tasks: task_utils.yml
+- include_tasks: task_scripts.yml
 

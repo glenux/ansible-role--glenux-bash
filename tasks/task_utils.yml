@@ -1,0 +1,13 @@
+---
+
+- name: Install fasd
+  apt:
+    name: fasd
+    state: present
+
+
+- name: Install fzf
+  apt:
+    name: fzf
+    state: present
+
