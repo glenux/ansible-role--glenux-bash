@@ -8,3 +8,6 @@ for pager in vim nano emacs ; do
 	fi
 done
 
+export EDITOR="vim"
+export MARKDOWN_DOC_EDITOR="ghostwriter"
+export MARKDOWN_SLIDES_EDITOR="Marp"
