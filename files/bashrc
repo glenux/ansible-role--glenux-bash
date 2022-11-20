@@ -11,8 +11,13 @@
 if [ -d "$HOME/.bashrc.d" ]; then
 	for script in $(find "$HOME/.bashrc.d/" -name '*.sh' |sort -n) ; do
 		# echo "Loading `basename \"$script\"`..." # >&2
-		. $script
+		. "$script"
 	done
 fi
 
+case "$(hostname)" in
+	dilong) export LIBVA_DRIVER_NAME=i965
+		;;
+	*) ;;
+esac
 
